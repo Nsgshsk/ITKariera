@@ -9,7 +9,7 @@ namespace ITKariera_Module4
     class CustomList
     {
         private object[] arr;
-        private int capacity = 4;
+        private readonly int initialCapacity = 4;
         private int count;
         public int Count
         {
@@ -22,7 +22,7 @@ namespace ITKariera_Module4
         }
         public CustomList()
         {
-            arr = new object[capacity];
+            arr = new object[initialCapacity];
         }
         public void Add(object item)
         {
@@ -32,7 +32,7 @@ namespace ITKariera_Module4
         }
         private void Resize()
         {
-            object[] tmp = new object[capacity * 2];
+            object[] tmp = new object[initialCapacity * 2];
             arr.CopyTo(tmp, 0);
             arr = tmp;
         }
@@ -62,7 +62,7 @@ namespace ITKariera_Module4
         }
         public void Clear()
         {
-            arr = new object[capacity];
+            arr = new object[initialCapacity];
             count = 0;
         }
         public void Remove(object item)
@@ -83,6 +83,18 @@ namespace ITKariera_Module4
             Array.Copy(arr, index + 1, tmp, index, Count - index - 1);
             count--;
             arr = tmp;
+        }
+        public bool Contains(object item)
+        {
+            return IndexOf(item) < 0 ? false : true;
+        }
+        public override string ToString()
+        {
+            return String.Join("\n", arr);
+        }
+        public string ToString(string separator)
+        {
+            return String.Join(separator, arr);
         }
     }
 }
