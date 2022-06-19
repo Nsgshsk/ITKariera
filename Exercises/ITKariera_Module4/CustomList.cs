@@ -49,14 +49,14 @@ namespace ITKariera_Module4
             Array.Copy(arr, index, tmp, index + 1, Count - index - 1);
             arr = tmp;
         }
-        public int IndexOf(object item)
+        public int IndexOf(dynamic item)
         {
             for (int i = 0; i < Count; i++)
             {
                 Type t1 = item.GetType();
                 Type t2 = arr[i].GetType();
                 if (t1 == t2)
-                    if ( (dynamic) item == (dynamic) arr[i]) return i;
+                    if (item == (dynamic) arr[i]) return i;
             }
             return -1;
         }
