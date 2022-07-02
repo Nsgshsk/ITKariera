@@ -118,6 +118,10 @@ namespace ITKariera_Module4
                 head.Next = tmp;
                 count++;
             }
+            else if (index == Count - 1)
+            {
+                tail = new Node(item, tail);
+            }
             else
             {
                 Node prevNode = head;
@@ -154,6 +158,10 @@ namespace ITKariera_Module4
                     {
                         prevNode.Next = mid.Next;
                         count--;
+                        if (Object.Equals(mid, tail))
+                        {
+                            tail = prevNode;
+                        }
                         return;
                     }
                     prevNode = mid;
@@ -178,6 +186,10 @@ namespace ITKariera_Module4
                     {
                         prevNode.Next = mid.Next;
                         count--;
+                        if (Object.Equals(mid, tail))
+                        {
+                            tail = prevNode;
+                        }
                         return;
                     }
                     prevNode = mid;
